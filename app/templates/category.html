@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}Категория{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="greeting">
+        <h1>Выберите нужную вам категорию!</h1>
+    </div>
+    <div><h3 style = 'text-align: left; position: relative; top: 15px; left: 15px;'>Жанры:</h3>
+        <div class="row">
+            {% for category in categories %}
+                <div class="col-md-3 mb-4">
+                    <div class="category-card text-center h-100">
+                        <div class="category-card-body">
+                            <a href="{{ url_for('index', category_name=category[0]) }}">
+                                <h5 class="category-card-title">{{ category[0] }}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div><h3 style = 'text-align: left; position: relative; top: 15px; left: 15px;'>Авторы:</h3>
+        <div class="row">
+            {% for author in authors %}
+                <div class="col-md-3 mb-4">
+                    <div class="category-card text-center h-100">
+                        <div class="category-card-body">
+                            <a href="{{ url_for('index', author_name=author[0]) }}">
+                                <h5 class="category-card-title">{{ author[0] }}</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

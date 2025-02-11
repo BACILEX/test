@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block title %}Обращение{% endblock %}
+
+{% block content %}
+<div class="content">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <div class="greeting">
+        <h1>Обращение №{{order[0]}}</h1>
+    </div>
+    <h3>Информация</h3>
+    <ol class="book_info">
+        <li>Книга: <span class="book-value">{{ order[1] }}</span></li>
+        <li>Автор: <span class="book-value">{{ order[2] }}</span></li>
+        {% if order[3]%}
+            <li>Дата взятия: <span class="book-value">{{ order[3] }}</span></li>
+        {% endif %}
+        {% if order[4]%}
+            <li>Дата возврата: <span class="book-value">{{ order[4] }}</span></li>
+        {% endif %}
+        <li>Статус: <span class="book-value">{{ order[5] }}</span></li>
+    </ol>
+    {% if current_user.role == "user" %}
+        <form action="{{url_for('add_feedback', isbn = order[6])}}" method="POST">
+            <button type="submit" class="login-btn">Оставить отзыв</button>
+        </form>
+        {% if order[5] == "Выдан" %}
+            <form action="{{url_for('change_status', num = order[0])}}" method="POST">
+                <button type="submit" class="login-btn">Запрос возврата</button>
+            </form>
+        {% endif %}
+    {% elif current_user.role == "admin" %}
+        {% if order[5] == "Не подтвержден" %}
+            <form action="{{url_for('change_status', num = order[0])}}" method="POST">
+                <button type="submit" class="login-btn">Подтвердить бронь</button>
+            </form>
+        {% elif order[5] == "Запрос на возврат" %}
+            <form action="{{url_for('change_status', num = order[0])}}" method="POST">
+                <button type="submit" class="login-btn">Подтверждение возврата</button>
+            </form>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

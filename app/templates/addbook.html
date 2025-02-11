@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+
+{% block title %}Добавление книги{% endblock %}
+
+{% block content %}
+<div class="about">
+  <div class="container">
+      <h2>Добавить книгу</h2>
+      <form method="POST">
+          {{ form.hidden_tag() }}
+
+          <div class="form-group">
+              {{ form.name.label }}
+              {{ form.name(class="form-control", placeholder="Введите название книги") }}
+              {% if form.name.errors %}
+                  <div class="text-danger">
+                      {{ form.name.errors[0] }}
+                  </div>
+              {% endif %}
+          </div>
+
+          <div class="form-group">
+              {{ form.author_name.label }}
+              {{ form.author_name(class="form-control", placeholder="Введите имя автора") }}
+              {% if form.author_name.errors %}
+                  <div class="text-danger">
+                      {{ form.author_name.errors[0] }}
+                  </div>
+              {% endif %}
+          </div>
+
+          <div class="form-group">
+              {{ form.num_stock.label }}
+              {{ form.num_stock(class="form-control", placeholder="Введите количество на складе") }}
+              {% if form.num_stock.errors %}
+                  <div class="text-danger">
+                      {{ form.num_stock.errors[0] }}
+                  </div>
+              {% endif %}
+          </div>
+
+          <div class="form-group">
+              {{ form.isbn.label }}
+              {{ form.isbn(class="form-control", placeholder="Введите ISBN книги") }}
+              {% if form.isbn.errors %}
+                  <div class="text-danger">
+                      {{ form.isbn.errors[0] }}
+                  </div>
+              {% endif %}
+          </div>
+
+          <div class="form-group">
+              {{ form.publication_year.label }}
+              {{ form.publication_year(class="form-control", placeholder="Введите год публикации") }}
+              {% if form.publication_year.errors %}
+                  <div class="text-danger">
+                      {{ form.publication_year.errors[0] }}
+                  </div>
+              {% endif %}
+          </div>
+
+          <div class="form-group">
+              {{ form.name_publish.label }}
+              {{ form.name_publish(class="form-control", placeholder="Введите название издательства") }}
+              {% if form.name_publish.errors %}
+                  <div class="text-danger">
+                      {{ form.name_publish.errors[0] }}
+                  </div>
+              {% endif %}
+          </div>
+
+          <div class="form-group">
+              {{ form.categories.label }}
+              {{ form.categories(class="form-control", placeholder="Выберите категорию книги") }}
+              {% if form.categories.errors %}
+                  <div class="text-danger">
+                      {{ form.categories.errors[0] }}
+                  </div>
+              {% endif %}
+          </div>
+
+          <div class="form-group">
+              {{ form.description.label }}
+              {{ form.description(class="form-control", placeholder="Введите описание книги") }}
+              {% if form.description.errors %}
+                  <div class="text-danger">
+                      {{ form.description.errors[0] }}
+                  </div>
+              {% endif %}
+          </div>
+
+          <div>
+              {{ form.submit(class="add-btn") }}
+          </div>
+      </form>
+  </div>
+</div>
+{% endblock %}

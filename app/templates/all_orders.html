@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}Книги{% endblock %}
+
+{% block content %}
+<div class="content">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+  <div class="greeting">
+            <h1>Обращения за все время</h1>
+        </div>
+        <div class="">
+            <div class="row">
+                {% for order in orders %}
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-center h-100">
+                            <a href="{{url_for('order_detail', num = order[0])}}">
+                            <div class="card-body">
+                                <h5 class="card-title">Бронь №{{ order[0] }}</h5>
+                                <h5 class="card-title">Статус: {{ order[5] }}</h5>
+                                <h5 class="card-title">Пользователь: {{ order[1] }}</h5>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+</div>
+{% endblock %}

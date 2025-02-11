@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}Личный кабинет{% endblock %}
+
+{% block content %}
+<div class = "about">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div>
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <div class="container">
+        <div class="profile">
+            <img src="{{ url_for('static', filename='img/icon.jpg') }}" class="profile-img">
+            <h1 class="user">Пользователь: {{current_user.name}}</h1>
+            <h1 class="user">Ваша почта: {{current_user.email}}</h1>
+            {% if current_user.role == 'user' %}
+                <h1 class="user">№ билета: {{current_user.library_card}}</h1>
+                <ul class = "func">
+                    <li><a href="{{ url_for('like') }}"><i class="bi bi-heart-fill"></i> Избранные</a></li>
+                    <li><a href="{{ url_for('my_orders') }}"><i class="bi bi-clock-history"></i> Взятые книги</a></li>
+            {% else %}
+                <ul class = "func">
+                    <li><a href="{{ url_for('all_orders') }}"><i class="bi bi-clock-history"></i> Просмотреть все обращения</a></li>
+                    <li><a href="{{ url_for('feedback') }}"><i class="bi bi-chat-left-text"></i> Посмотреть отзывы</a></li>
+            {% endif %}
+                <li><a href="{{ url_for('edit_user') }}"><i class="bi bi-pencil-fill"></i> Редактировать профиль</a></li>
+                <li><a href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-left"></i> Выйти</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block title %}Отзывы{% endblock %}
+
+{% block content %}
+<div class="content">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <div class="greeting">
+        <h1>Отзывы на "{{feedbacks[0][3]}}"</h1>
+    </div>
+    <ul class = 'book_info'>
+        {% for feedback in feedbacks %}
+            <li style="color: #000;">
+                <span>Отзыв {{ loop.index }} (Пользователь {{feedback[2]}}):</span>
+            </li>
+            <li>Книга: <span class="book-value">{{feedback[3]}}</span></li>
+            <li>Оценка: <span class="book-value">{{feedback[0]}}</span></li>
+            <li>Отзыв: <span class="book-value">{{feedback[1]}}</span></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

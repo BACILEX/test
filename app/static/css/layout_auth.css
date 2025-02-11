@@ -1,0 +1,182 @@
+/* Общие стили для страницы */
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: #B0C4DE;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Контейнер для окна авторизации */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Окно авторизации */
+.auth-box {
+    background-color: #B0C4DE; /* Цвет окна */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    text-align: center;
+    width: 350px;
+}
+
+/* Заголовок */
+.auth-box h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Поля ввода */
+.auth-box label {
+    display: block;
+    text-align: left;
+    margin: -10px 5px 5px;
+    color: #555;
+    font-size: 14px;
+}
+
+.auth-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Кнопка Войти */
+.login-btn {
+    background-color: #4682B4; /* Цвет кнопки */
+    color: #ebd1ca;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn:hover {
+    background-color: #000080;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Ссылки под кнопкой Войти */
+.auth-links {
+    font-weight: bold;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.auth-links a {
+    color: #4682B4;
+    text-decoration: none;
+    font-size: 14px;
+    transition: transform 0.2s ease;
+}
+
+.auth-links a:hover {
+    color: #000080;
+    text-decoration: none;
+    transform: scale(1.03)
+}
+
+/* Стили для контейнера регистрации */
+.register-container {
+    background-color: #B0C4DE;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 400px;
+    text-align: center;
+}
+
+.register-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #38250e;
+}
+
+/* Стили для формы */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #38250e;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #4682B4;
+    box-shadow: 0 0 5px rgba(161, 70, 42, 0.5);
+}
+
+/* Стили для кнопки отправки */
+.register-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ebd1ca;
+    background-color: #4682B4; /* Цвет кнопки */
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.register-btn:hover {
+    background-color: #000080;
+    color: #fff;
+    transform: scale(1.05); /* Небольшое увеличение */
+}
+
+/* Ссылка на вход */
+.login-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #38250e;
+}
+
+.login-link a{
+    color: #4682B4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link a:hover {
+    color: #000080;
+    text-decoration: none;
+}

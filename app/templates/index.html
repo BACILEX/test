@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<div class="content">
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="greeting">
+        {% if current_user.is_authenticated == false%}
+            <h1>Добро пожаловать в онлайн библиотеку!</h1>
+            <p>Книги – это удивительный мир знаний, вдохновения и эмоций.
+                Они помогают нам развиваться, находить ответы на важные вопросы и мечтать о большем.
+                Мы рады стать частью вашего пути к новым открытиям и ярким историям.
+                Исследуйте наш каталог и найдите книгу, которая станет вашим верным спутником.</p>
+        {% endif  %}
+        <form method="POST">
+            <div class = 'search-container'>
+            {{ form.hidden_tag() }}
+            <h1>Поиск</h1>
+            <div class="form-group">
+                {{ form.search_query.label }}
+                {{ form.search_query(class="form-control") }}
+            </div>
+            {{ form.submit (class = "add-btn") }}
+            </div>
+        </form>
+    </div>
+
+    <!-- Books Section -->
+    <div class="">
+        <div class="row">
+            {% for book in books %}
+                <div class="col-md-3 mb-4">
+                    <div class="card text-center h-100">
+                        <a href="{{ url_for('book_detail', isbn=book[1]) }}">
+                        <img src="{{ url_for('static', filename='img/kniga.jpg') }}"
+                             class="card-img-top"
+                             alt="{{ book[1] }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ book[0] }}</h5>
+                            <h5 class="card-title">{{ book[6] }}</h5>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}Добавление скидки{% endblock %}
+
+{% block content %}
+<div class="about">
+    <div class="container">
+        <h2>Добавить скидку</h2>
+        <h3>Введите новую цену для книги "{{name}}"</h3> <!-- Название книги -->
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.new_price.label }}
+                {{ form.new_price(class="form-control", placeholder="Введите цену") }}
+                {% if form.new_price.errors %}
+                   <div class="text-danger">
+                      {{ form.new_price.errors[0] }}
+                   </div>
+                {% endif %}
+            </div>
+            <div>
+                {{ form.submit(class="add-btn") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

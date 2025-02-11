@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block title %}Бронь{% endblock %}
+
+{% block content %}
+<div class="content">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <div class="greeting">
+        <h1>Бронь</h1>
+    </div>
+    <ul class = 'book_info'>
+        {% for book in books %}
+            <li style="color: #000;">
+                <span>Позиция {{ loop.index }}:</span>
+            </li>
+            <li>Книга: <span class="book-value">{{book[0]}}</span> Автор: <span class="book-value">{{book[2]}}</span></li>
+                <form action="{{ url_for('delete_basket', isbn=book[1]) }}" method="POST" class="delete-form">
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash-fill"></i>
+                    </button>
+                </form>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
