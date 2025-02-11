@@ -11,13 +11,31 @@
         <div class="row">
             {% for category in categories %}
                 <div class="col-md-3 mb-4">
-                    <div class="category-card text-center h-100">
+                    {% if category[0] == "Русская классика"%}
+                    <div class="category-card text-center h-100" style="background-image: url('/static/img/rus.jpg'); background-size: cover; background-position: center; padding: 30px;">
                         <div class="category-card-body">
                             <a href="{{ url_for('index', category_name=category[0]) }}">
-                                <h5 class="category-card-title">{{ category[0] }}</h5>
+                                <h5 class="category-card-title" style=" color: #FFF;"> {{ category[0] }} </h5>
                             </a>
                         </div>
                     </div>
+                    {% elif category[0] == "Фэнтези"%}
+                    <div class="category-card text-center h-100" style="background-image: url('/static/img/fant.jpg'); background-size: cover; background-position: center; padding: 30px;">
+                        <div class="category-card-body">
+                            <a href="{{ url_for('index', category_name=category[0]) }}">
+                                <h5 class="category-card-title" style=" color: #FFF;"> {{ category[0] }} </h5>
+                            </a>
+                        </div>
+                    </div>
+                    {% elif category[0] == "История"%}
+                    <div class="category-card text-center h-100" style="background-image: url('/static/img/history.jpg'); background-size: cover; background-position: center; padding: 30px;">
+                        <div class="category-card-body">
+                            <a href="{{ url_for('index', category_name=category[0]) }}">
+                                <h5 class="category-card-title" style=" color: #FFF;"> {{ category[0] }} </h5>
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>

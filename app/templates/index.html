@@ -17,18 +17,18 @@
         {% endif %}
     {% endwith %}
 
-    <div class="greeting">
+    <div class="greeting" style="background-image: url('/static/img/fon.jpg'); background-size: cover; background-position: center; padding: 50px;">
         {% if current_user.is_authenticated == false%}
-            <h1>Добро пожаловать в онлайн библиотеку!</h1>
-            <p>Книги – это удивительный мир знаний, вдохновения и эмоций.
+            <h1 class="begin">Добро пожаловать в онлайн библиотеку!</h1>
+            <p class="begin">Книги – это удивительный мир знаний, вдохновения и эмоций.
                 Они помогают нам развиваться, находить ответы на важные вопросы и мечтать о большем.
                 Мы рады стать частью вашего пути к новым открытиям и ярким историям.
                 Исследуйте наш каталог и найдите книгу, которая станет вашим верным спутником.</p>
         {% endif  %}
+        <p class="begin">Поиск</p>
         <form method="POST">
             <div class = 'search-container'>
             {{ form.hidden_tag() }}
-            <h1>Поиск</h1>
             <div class="form-group">
                 {{ form.search_query.label }}
                 {{ form.search_query(class="form-control") }}
