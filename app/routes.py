@@ -55,6 +55,7 @@ def index():
             elif category_name:
                 cur.execute('''SELECT * 
                                     FROM book b
+                                    JOIN author_book ab ON b.isbn = ab.isbn
                                     JOIN category_book cb ON b.isbn = cb.isbn
                                     WHERE cb.category_name = %s''', (category_name,))
                 books = cur.fetchall()
@@ -314,6 +315,8 @@ def category():
 @app.route('/book/<isbn>', methods=['GET', 'POST'])
 def book_detail(isbn):
     num_form = BasketForm()
+    status = "Возвращен"
+
     try:
         with psycopg.connect(
                 host=app.config['DB_SERVER'],
@@ -323,35 +326,46 @@ def book_detail(isbn):
                 dbname=app.config['DB_NAME']
         ) as con:
             cur = con.cursor()
+
             # Получение данных книги по ISBN
             cur.execute("SELECT * FROM book WHERE isbn = %s", (isbn,))
             book = cur.fetchone()
+
             # Получение автора книги
             cur.execute("SELECT name_author FROM author_book WHERE isbn = %s", (isbn,))
             author = cur.fetchone()
 
-            if num_form.validate_on_submit():  # Проверка формы на корректность
-                cur.execute('''SELECT * FROM user_books
-                            WHERE login = %s AND isbn = %s''', (current_user.login, isbn, ))
-                exist = cur.fetchone()
-                if not exist:
-                    cur.execute('''INSERT INTO user_books (login, isbn)
-                                VALUES (%s, %s)''', (current_user.login, isbn, ))
-                    flash(f'Книга забронирована', 'success')
-                    return redirect(url_for('book_detail', isbn=isbn))  # Перезагрузка страницы
-                else:
-                    flash(f'Книга уже забронирована', 'danger')
-                    return redirect(url_for('book_detail', isbn=isbn))
-            if book:
-                # Отображение информации о книге
-                return render_template('book_detail.html', book=book, author=author, form=num_form)
-            else:
+            if not book:
                 flash('Книга не найдена', 'danger')
                 return redirect(url_for('index'))
+
+            # Отображаем страницу с книгой перед обработкой формы
+            if request.method == 'GET':
+                return render_template('book_detail.html', book=book, author=author, form=num_form)
+
+            # Проверка формы и бронирование книги
+            if num_form.validate_on_submit() and book[3] > 0:  # Проверка формы на корректность
+                cur.execute('''SELECT * FROM user_books
+                            WHERE login = %s AND isbn = %s AND status != %s''',
+                            (current_user.login, isbn, status,))
+                exist = cur.fetchone()
+
+                if exist:
+                    flash(f'Книга уже забронирована', 'danger')
+                else:
+                    cur.execute('''INSERT INTO user_books (login, isbn)
+                                VALUES (%s, %s)''', (current_user.login, isbn,))
+                    flash(f'Книга забронирована', 'success')
+
+                return redirect(url_for('book_detail', isbn=isbn))
+
+            flash(f'Невозможно забронировать книгу', 'danger')
+            return redirect(url_for('book_detail', isbn=isbn))
 
     except Exception as e:
         flash(f'Ошибка при загрузке данных: {str(e)}', 'danger')
         return redirect(url_for('index'))
+
 
 # Удаление книги из каталога (для продавцов)
 @app.route('/delete_book/<isbn>', methods=['POST'])
