@@ -294,7 +294,7 @@ def category():
 @app.route('/book/<isbn>', methods=['GET', 'POST'])
 def book_detail(isbn):
     num_form = BasketForm()  # Форма для добавления книги в бронь
-    status = "Возвращен"  # Статус возврата книги
+    status = "Не подтвержден"  # Статус возврата книги
 
     try:
         with psycopg.connect(
@@ -325,7 +325,7 @@ def book_detail(isbn):
             # Проверка формы и бронирование книги
             if num_form.validate_on_submit() and book[3] > 0:  # Проверка формы на корректность
                 cur.execute('''SELECT * FROM user_books
-                            WHERE login = %s AND isbn = %s AND status != %s''',
+                            WHERE login = %s AND isbn = %s AND status = %s''',
                             (current_user.login, isbn, status,))
                 exist = cur.fetchone()
 
