@@ -1,0 +1,142 @@
+/* ========== СТИЛИ ДЛЯ СТРАНИЦЫ КАТЕГОРИЙ ========== */
+.category-page {
+    font-family: 'Rubik', sans-serif;
+    background-color: #E6ECF5; /* Светло-голубой фон */
+    padding: 20px 10%;
+}
+
+/* Заголовок страницы */
+.category-page h1 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #2C3E50;
+    margin-bottom: -45px;
+    text-align: left;
+    margin-top: -30px;
+}
+
+/* Подзаголовки */
+.category-page h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #444;
+    text-align: left;
+    margin-top: -15px;
+    margin-bottom: 30px;
+}
+
+/* Контейнер для карточек */
+.category-page .container {
+    max-width: 1100px;
+    margin: 0;
+    padding: 5px;
+}
+
+/* ========== КАРТОЧКИ КАТЕГОРИЙ И АВТОРОВ ========== */
+.category-page .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Карточки жанров */
+.category-page .category-card {
+    border-radius: 10px;
+    background: #0056B3;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 110px;
+    width: 210px;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Заголовок внутри карточки */
+.category-page .category-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Ссылки внутри карточек */
+.category-page .category-card a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Эффект при наведении */
+.category-page .category-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Карточки авторов */
+.category-page .author-card {
+    background: #F8F9FA;
+    color: #2C3E50;
+    border: 1px solid #D1D9E6;
+    height: 100px;
+    width: 210px;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Ссылки внутри карточек авторов */
+.category-page .author-card a {
+    text-decoration: none;
+    color: #2C3E50;
+    font-weight: bold;
+}
+
+/* Эффект при наведении на карточку автора */
+.category-page .author-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    background: #E9F0FB;
+}
+
+/* ========== АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ ========== */
+@media (max-width: 992px) {
+    .category-page {
+        padding: 15px 5%;
+    }
+
+    .category-page .container {
+        width: 100%;
+    }
+
+    .category-page .row {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+
+    .category-page .category-card,
+    .category-page .author-card {
+        width: 160px;
+        height: 90px;
+        padding: 12px;
+    }
+
+    .category-page h1 {
+        font-size: 24px;
+    }
+
+    .category-page h3 {
+        font-size: 18px;
+    }
+}

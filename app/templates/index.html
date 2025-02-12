@@ -17,7 +17,7 @@
         {% endif %}
     {% endwith %}
 
-    <div class="greeting" style="background-image: url('/static/img/fon.jpg'); background-size: cover; background-position: center; padding: 50px;">
+    <div class="greeting-i" style="background-image: url('/static/img/fon.jpg'); background-size: cover; background-position: center; padding: 50px;">
         {% if current_user.is_authenticated == false%}
             <h1 class="begin">Добро пожаловать в онлайн библиотеку!</h1>
             <p class="begin">Книги – это удивительный мир знаний, вдохновения и эмоций.
@@ -45,7 +45,7 @@
                 <div class="col-md-3 mb-4">
                     <div class="card text-center h-100">
                         <a href="{{ url_for('book_detail', isbn=book[1]) }}">
-                        <img src="{{ url_for('static', filename='img/kniga.jpg') }}"
+                        <img src="{{ url_for('static', filename='img/book.jpg') }}"
                              class="card-img-top"
                              alt="{{ book[1] }}">
                         <div class="card-body">

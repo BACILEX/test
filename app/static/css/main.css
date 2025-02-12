@@ -1,122 +1,210 @@
+/* ========== ОБЩИЕ СТИЛИ ========== */
 body {
-    overflow-x: hidden;
-    background: #FFF;
     font-family: 'Rubik', sans-serif;
-    color: #38250e;
-    font-size: 23px;
-}
-
-aside {
-    background: #B0C4DE;
-    width: 20%;
-    padding: 2.5%;
-    height: 100vh;
-    border-right: 3px solid #00008B;
-    position: fixed;
-}
-
-aside img {
-    width: 130px;
-    margin-left: 10px;
-    float: left;
-}
-
-aside .logo {
-    font-family: 'Rubik', sans-serif;
-    font-size: 30px;
-    font-weight: bold;
-    position: relative;
-    top: -12px;
-}
-
-aside h3 {
-    margin-top: 50px;
-    font-size: 30px;
-    position: relative;
-}
-
-aside ul {list-style: none}
-
-aside ul li, aside ul a{
-    color: #38250e;
-    display: block;
-    margin-top: 20px;
-    transition: transform .6s ease;
-    font-weight: bold;
-    position: relative;
-    left: -13px;
-}
-
-aside ul li:hover, aside ul a:hover{
-    color: #000008B;
-    text-decoration: none;
-    transform: scale(1.03);
-}
-
-aside .pers_acc {
-    color: #38250e;
-    margin-bottom: 20px;
-    transition: transform 0.6s ease;
-    font-weight: bold;
-    position: absolute;
-    bottom: 0;
-    left: 43px;
-    padding: 5px;
-    text-decoration: none;
-    display: inline-block;
-}
-
-aside .pers_acc:hover {
-    color: #000008B;
-    text-decoration: none;
-    transform: scale(1.03);
-}
-
-.content {
-    float: right;
-    margin-left: 20%;
-    width: 80%;
-    text-align: center;
-    position: relative;
-    top: 25px;
-}
-
-.greeting {
-    border-bottom: 3px solid #00008B;
-}
-
-.greeting .begin{
-    font-size: 27px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 2);
-    width: 1300px;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: 450;
-    color: #FFF;
-}
-
-.greeting p, h1{
-    font-size: 27px;
-    width: 1300px;
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: 450;
-    color: #000000;
-}
-
-.about {
-    float: right;
-    width: 80%;
-    text-align: center;
-    position: relative;
-    top: 40px;
-}
-
-.container {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
     background-color: #B0C4DE;
+    margin: 0;
+    padding: 0;
+    padding-top: 70px;
+}
+
+/* ========== НАВИГАЦИЯ ========== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f9fa; /* Цвет фона */
+    z-index: 1000; /* Поверх всех элементов */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Добавляем небольшую тень */
+}
+
+.navbar-brand {
+    font-size: 24px;
+    color: #007bff !important;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 20px;
+    font-weight: 500;
+    color: #333 !important;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff !important;
+}
+
+.navbar-toggler {
+    border: none;
+    outline: none;
+}
+
+/* ========== ФЛЕШ-СООБЩЕНИЯ ========== */
+.flash-messages {
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.alert {
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 5px solid #28a745;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 5px solid #dc3545;
+}
+
+/* ========== ГЛАВНАЯ ПРИВЕТСТВЕННАЯ СЕКЦИЯ ========== */
+.greeting-i {
+    background-size: cover;
+    background-position: center;
+    padding: 50px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.greeting-i h1.begin {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.greeting-i p.begin {
+    font-size: 18px;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+/* ========== ПОИСКОВАЯ ФОРМА ========== */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.search-container .form-group {
+    width: 60%;
+    text-align: center;
+}
+
+.search-container .form-control {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    text-align: center;
+}
+
+.add-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.add-btn:hover {
+    background-color: #0056b3;
+}
+
+/* ========== СЕКЦИЯ КНИГ ========== */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.card {
+    border: none;
+    text-decoration: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card a {
+    text-decoration: none;
+}
+
+.card:hover {
+    transform: scale(1.01);
+}
+
+.card:hover .card-title {
+    font-size: 17px;
+    color: #007bff; /* Синий цвет */
+    transition: font-size 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.card img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.add-btn {
+    background-color: #4682B4; /* Цвет кнопки */
+    color: #ebd1ca;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    padding: 10px;
+    width: 20%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-btn:hover {
+    background-color: #000080;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.container-profile {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -131,143 +219,36 @@ aside .pers_acc:hover {
     margin-bottom: 20px;
 }
 
-.name {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.bio {
-    font-size: 16px;
-    color: #555;
-    margin-bottom: 30px;
-}
-
 .user {
     font-size: 24px;
-    margin-bottom: 20px;
     text-align: left;
 }
 
 .func {
     list-style: none;
     position: relative;
-    top: 30px;
 }
 
 .func li, a{
-    color: #38250e;
+    color: #4682B4;
     display: block;
-    margin-top: 30px;
+    font-size: 25px;
     transition: transform .6s ease;
     font-weight: bold;
     text-align: left;
+    margin-top: 10px;
 }
 
 .func li:hover, a:hover{
-    color: #000008B;
+    color: #000080;
     text-decoration: none;
     transform: scale(1.03);
-}
-
-.form-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-.add-btn {
-    background-color: #4169E1; /* Цвет кнопки */
-    color: #ebd1ca;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    margin-top: 15px;
-    padding: 10px;
-    width: 60%;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.add-btn:hover {
-    background-color: #00008B;
-    color: #fff;
-    transform: scale(1.05);
-}
-
-.card {
-    left: 15px;
-    margin-right: 25px;
-    margin-top: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.card img {
-    width: 60%;
-    height: auto;
-    object-fit: cover;
-    margin-left: 65px;
-}
-
-.card:hover {
-    transform: scale(1.02);
-}
-
-.form-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #38250e;
-}
-
-.custom-input {
-    height: 45px;
-}
-
-.category-card {
-    background: #B0C4DE;
-    margin-right: 40px;
-    position: relative;
-    top: 15px;
-    left: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 50px;
-}
-
-.category-card:hover {
-    transform: scale(1.02);
-}
-
-.category-card-body {
-    padding: 20px;
-}
-
-.category-card-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #38250e;
-}
-
-ol {
-    list-style-type: decimal;
 }
 
 .book_info {
     text-style: none;
     text-align: left;
+    font-size: 20px;
 }
 
 .book_info li {
@@ -282,6 +263,24 @@ ol {
     color: #000080;
 }
 
+.greeting p{
+    font-size: 27px;
+    width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 450;
+    color: #a1462a;
+}
+
+.login-btn-container {
+    display: flex;
+    flex-direction: column; /* Размещаем кнопки друг под другом */
+    align-items: center; /* Выравнивание по центру */
+    margin-top: 5px;
+    width: 100%;
+}
+
+/* Стили для кнопки */
 .login-btn {
     background-color: #4682B4; /* Цвет кнопки */
     color: #ebd1ca;
@@ -291,7 +290,8 @@ ol {
     border-radius: 5px;
     margin-top: 25px;
     padding: 10px;
-    width: 15%;
+    width: 200px; /* Фиксированная ширина */
+    text-align: center;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
@@ -302,50 +302,35 @@ ol {
     transform: scale(1.05);
 }
 
-.num-field{
-    width: 200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.delete-form {
-    margin-top: 10px; /* Добавляем небольшой отступ слева от кнопки */
-}
-
-.search-container {
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    bottom: 10px;
-    margin-top: 40px;
-}
-
-.review-buttons {
-    display: flex;
-    gap: 10px; /* Промежуток между кнопками */
-    margin-top: 20px; /* Отступ сверху */
-}
-
-.review-buttons button{
-    background-color: #B0C4DE; /* Цвет кнопки */
-    color: #ebd1ca;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    margin-top: 100px;
-    margin-left: 380px;
-    padding: 10px;
-    width: 200px;
-    height: 60px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    position: relative;
-    margin-bottom: auto;
-}
-.review-buttons button:hover{
-    background-color: #000080;
-    color: #fff;
-    transform: scale(1.05);
+/* ========== АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ ========== */
+@media (max-width: 992px) {
+    .navbar-nav {
+        text-align: center;
     }
+
+    .navbar-nav .nav-item {
+        margin: 10px 0;
+    }
+
+    .greeting h1.begin {
+        font-size: 26px;
+    }
+
+    .greeting p.begin {
+        font-size: 16px;
+    }
+
+    .search-container .form-group {
+        width: 90%;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col-md-3 {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+}

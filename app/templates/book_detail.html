@@ -15,7 +15,7 @@
             </div>
         {% endif %}
     {% endwith %}
-    <div class="greeting">
+    <div class="greeting-i" style="color: #000000; margin-bottom: -40px;">
         <h1>{{ book[0] }}</h1>
     </div>
     <h3>Информация</h3>
@@ -25,32 +25,34 @@
         <li>Описание: <span class="book-value">{{ book[5] }}</span></li>
         <li>Оставшееся количество: <span class="book-value">{{ book[3] }} шт.</span></li>
     </ol>
-    {% if current_user.role == "user" %}
-    <form method="POST">
-        {{ form.hidden_tag() }}
-        <div>
-            {{ form.submit (class="login-btn") }}
-        </div>
-    </form>
+    <div class="login-btn-container">
+        {% if current_user.role == "user" %}
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.submit (class="login-btn") }}
+            </div>
+        </form>
 
-    <form action="{{ url_for('add_like', isbn=book[1]) }}" method="POST">
-        <button type="submit" class="login-btn">Добавить в избранные</button>
-    </form>
-    <form action="{{ url_for('add_feedback', isbn=book[1]) }}" method="POST" >
-        <button type="submit" class="login-btn">Добавить отзыв</button>
-    </form>
-    <form action="{{ url_for('feedback', isbn=book[1]) }}" method="POST">
-        <button type="submit" class="login-btn">Просмотреть все отзывы</button>
-    </form>
-    {% elif current_user.role == 'admin' %}
-        <form action="{{ url_for('delete_book', isbn=book[1]) }}" method="POST">
-            <button type="submit" class="btn btn-danger">
-                Удалить  <i class="bi bi-trash-fill"></i>
-            </button>
+        <form action="{{ url_for('add_like', isbn=book[1]) }}" method="POST">
+            <button type="submit" class="login-btn">Добавить в избранные</button>
+        </form>
+        <form action="{{ url_for('add_feedback', isbn=book[1]) }}" method="POST" >
+            <button type="submit" class="login-btn">Добавить отзыв</button>
         </form>
         <form action="{{ url_for('feedback', isbn=book[1]) }}" method="POST">
-            <button type="submit" class="login-btn">Просмотреть отзывы</button>
+            <button type="submit" class="login-btn">Просмотреть все отзывы</button>
         </form>
-    {% endif %}
+    </div>
+        {% elif current_user.role == 'admin' %}
+            <form action="{{ url_for('delete_book', isbn=book[1]) }}" method="POST">
+                <button type="submit" class="btn btn-danger">
+                    Удалить  <i class="bi bi-trash-fill"></i>
+                </button>
+            </form>
+            <form action="{{ url_for('feedback', isbn=book[1]) }}" method="POST">
+                <button type="submit" class="login-btn">Просмотреть отзывы</button>
+            </form>
+        {% endif %}
 </div>
 {% endblock %}

@@ -16,13 +16,13 @@
         {% endif %}
     {% endwith %}
     {% if current_user.role == 'user' %}
-        <div class="greeting">
+        <div class="greeting-i" style="color: #000000; margin-bottom: -50px;">
             <h1>Ваши книги</h1>
         </div>
         <div class="">
             <div class="row">
                 {% for order in orders %}
-                    <div class="col-md-3 mb-4">
+                    <div class="col-md-3 mb-4" style = "min-width: 300px; ">
                         <div class="card text-center h-100">
                             <a href="{{url_for('order_detail', num = order[0])}}">
                             <div class="card-body">
@@ -37,13 +37,13 @@
             </div>
         </div>
     {% else %}
-        <div class="greeting">
+        <div class="greeting-i" style = "color: #000; margin-bottom: -40px;">
             <h1>Брони и возвраты</h1>
         </div>
         <div class="">
             <div class="row">
                 {% for order in orders %}
-                    <div class="col-md-3 mb-4">
+                    <div class="col-md-3 mb-4" style = "min-width: 300px; ">
                         <div class="card text-center h-100">
                             <a href="{{url_for('order_detail', num = order[0])}}">
                             <div class="card-body">
