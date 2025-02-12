@@ -17,7 +17,7 @@
     {% endwith %}
     <div class="container-profile">
         <div class="profile">
-            <img src="{{ url_for('static', filename='img/icon.jpg') }}" class="profile-img">
+            <img src="{{ url_for('static', filename='img/icon.png') }}" class="profile-img">
             <h1 class="user">Пользователь: {{current_user.name}}</h1>
             <h1 class="user">Ваша почта: {{current_user.email}}</h1>
             {% if current_user.role == 'user' %}
@@ -28,7 +28,7 @@
             {% else %}
                 <ul class = "func">
                     <li><a href="{{ url_for('all_orders') }}"><i class="bi bi-clock-history"></i> Просмотреть все обращения</a></li>
-                    <li><a href="{{ url_for('feedback') }}"><i class="bi bi-chat-left-text"></i> Посмотреть отзывы</a></li>
+                    <li><a href="{{ url_for('all_feedbacks') }}"><i class="bi bi-chat-left-text"></i> Посмотреть отзывы</a></li>
             {% endif %}
                 <li><a href="{{ url_for('edit_user') }}"><i class="bi bi-pencil-fill"></i> Редактировать профиль</a></li>
                 <li><a href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-left"></i> Выйти</a></li>

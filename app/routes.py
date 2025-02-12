@@ -667,18 +667,33 @@ def feedback():
             dbname=app.config['DB_NAME']
     ) as con:
         cur = con.cursor()
-        if isbn:
-            cur.execute('''SELECT f.mark, f.description, f.login, b.name
-                        FROM book b 
-                        JOIN feedback f ON b.isbn = f.isbn
-                        WHERE f.isbn = %s''', (isbn,))
-        else:
-            cur.execute('''SELECT f.mark, f.description, f.login, b.name
-                                    FROM book b 
-                                    JOIN feedback f ON b.isbn = f.isbn''')
+        cur.execute('''SELECT f.mark, f.description, f.login, b.name
+                    FROM book b 
+                    JOIN feedback f ON b.isbn = f.isbn
+                    WHERE f.isbn = %s''', (isbn,))
         feedbacks = cur.fetchall()
     if feedbacks:
         return render_template("feedback.html", feedbacks=feedbacks)  # Отображение отзывов
     else:
         flash('Отзывы отсутствуют', 'danger')
         return redirect(url_for('book_detail', isbn=isbn))  # Перенаправление на страницу книги при отсутствии отзывов
+
+@app.route('/all_feedbacks', methods=['GET', 'POST'])
+def all_feedbacks():
+    with psycopg.connect(
+            host=app.config['DB_SERVER'],
+            user=app.config['DB_USER'],
+            port=app.config['DB_PORT'],
+            password=app.config['DB_PASSWORD'],
+            dbname=app.config['DB_NAME']
+    ) as con:
+        cur = con.cursor()
+        cur.execute('''SELECT f.mark, f.description, f.login, b.name
+                        FROM book b 
+                        JOIN feedback f ON b.isbn = f.isbn''')
+        feedbacks = cur.fetchall()
+    if feedbacks:
+        return render_template("all_feedbacks.html", feedbacks=feedbacks)  # Отображение отзывов
+    else:
+        flash('Отзывы отсутствуют', 'danger')
+        return redirect(url_for('profile'))  # Перенаправление на страницу профиля при отсутствии отзывов
