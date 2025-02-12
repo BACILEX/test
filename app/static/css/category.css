@@ -41,6 +41,14 @@
     margin-top: 10px;
 }
 
+.category-page .row-i {
+    display: flex;
+    flex-direction: column; /* Размещаем кнопки друг под другом */
+    justify-content: flex-start;
+    margin-top: 5px;
+    width: 100%;
+}
+
 /* Карточки жанров */
 .category-page .category-card {
     border-radius: 10px;
@@ -51,7 +59,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 110px;
+    height: 70px;
     width: 210px;
     text-align: center;
     background-size: cover;
@@ -81,18 +89,19 @@
 
 /* Карточки авторов */
 .category-page .author-card {
-    background: #F8F9FA;
+    background: #0056B3;
     color: #2C3E50;
     border: 1px solid #D1D9E6;
-    height: 100px;
+    height: 40px !important;
     width: 210px;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px !important;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start;
+    text-align: left;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    position: relative;
 }
 
 /* Ссылки внутри карточек авторов */
@@ -106,7 +115,7 @@
 .category-page .author-card:hover {
     transform: scale(1.05);
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
-    background: #E9F0FB;
+    background: #0056B3;
 }
 
 /* ========== АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ ========== */
